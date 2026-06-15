@@ -1,0 +1,36 @@
+package unqShop;
+import java.util.ArrayList;
+import java.util.List;
+public class Paquete extends ItemCatalogo {
+/* Prop: modelar elemento del catalogo que agrupa varios items.
+ * En base al patron Composite representa: "Composite"
+ *  
+ * 
+ * */
+	List <ItemCatalogo> items = new ArrayList<>();
+	
+	public Paquete(String nombre, String descripcion, double descuento) {
+		super(nombre, descripcion);
+		this.descuento = descuento;
+	}
+	public void addProducto(ItemCatalogo item) {
+		//Prop: agrega un item nuevo al paquete
+		items.add(item);
+	}
+	public void remove(ItemCatalogo item) {
+		//Prop: remueve el item del paquete
+		if (!items.contains(item)) {
+	        throw new IllegalArgumentException("El item no pertenece a este paquete");
+	    }
+	    items.remove(item);
+    }
+	
+	@Override
+	public double getPrecioBase() {
+		double suma = 0;
+        for (ItemCatalogo item : items) {
+            suma += item.getPrecioFinal();
+        }
+        return suma;
+	}
+}
