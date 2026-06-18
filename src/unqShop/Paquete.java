@@ -4,8 +4,7 @@ import java.util.List;
 public class Paquete extends ItemCatalogo {
 /* Prop: modelar elemento del catalogo que agrupa varios items.
  * En base al patron Composite representa: "Composite"
- *  
- * 
+ *  Nota: se decide implentar aqui el add y remove por motivos del uso del patron en este contexto.
  * */
 	List <ItemCatalogo> items = new ArrayList<>();
 	

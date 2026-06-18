@@ -1,11 +1,9 @@
 package unqShop;
 
 public abstract class ItemCatalogo {
-
 		/* Propósito: comportamiento común a implementar por todos los elementos del catálogo.
 		   representa en el Composite del Catálogo de Productos: "Component"
 		   Se decide que sea una clase abstracta por contexto y necesidades del ejercicio, luego no se implementa add, remove y getChild ya que entraría en conflicto con la leaf producto.   
-		  
 		 */
 	protected String nombre;
     protected String descripcion;
