@@ -18,11 +18,14 @@ public class Paquete extends ItemCatalogo {
 	}
 	public void remove(ItemCatalogo item) {
 		//Prop: remueve el item del paquete
+		this.verificarExisteItem(item);
+	    items.remove(item);
+    }
+	private void verificarExisteItem(ItemCatalogo item) {
 		if (!items.contains(item)) {
 	        throw new IllegalArgumentException("El item no pertenece a este paquete");
 	    }
-	    items.remove(item);
-    }
+	}
 	
 	@Override
 	public double getPrecioBase() {
