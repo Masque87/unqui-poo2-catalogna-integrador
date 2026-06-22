@@ -10,7 +10,7 @@ public class ProductoTest {
 
     @BeforeEach
     public void setUp() {
-        producto = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos", "AUR-001", "Electronica", "Sony", 8000.0);
+        producto = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos", 10, "AUR-001", "Electronica", "Sony", 8000.0);
     }
 
   //setters y getters
@@ -24,6 +24,11 @@ public class ProductoTest {
     public void testGetDescripcion() {
         assertEquals("Auriculares inalámbricos", producto.getDescripcion());
     }
+    
+    @Test
+	void testGetStock() {
+		assertEquals(producto.getStock(), 10);
+	}
 
     @Test
     public void testGetSKU() {
@@ -95,6 +100,17 @@ public class ProductoTest {
     public void testEsValidoProductoCompleto() {
         assertTrue(producto.esValido());
     }
+    
+    @Test 
+    void testTieneStock() {
+    	assertTrue(producto.tieneStock());
+    }
+    
+    @Test 
+    void testNoTieneStock() {
+    	producto.setStock(0);
+    	assertFalse(producto.tieneStock());
+    }
 
     @Test
     public void testEsValidoConAtributosDinamicosCompletos() {
@@ -111,29 +127,29 @@ public class ProductoTest {
 
     @Test
     public void testNoEsValidoSinSKU() {
-        Producto sinSku = new Producto("Auriculares", "desc", null, "Electronica", "Sony", 8000.0);
+        Producto sinSku = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos",10 ,null, "Electronica", "Sony", 8000.0);
         assertFalse(sinSku.esValido());
     }
     @Test
     public void testNoEsValidoConSKUVacio() {
-        Producto sinSku = new Producto("Auriculares", "desc", "", "Electronica", "Sony", 8000.0);
+        Producto sinSku = new Producto("Auriculares", "desc", 10,"", "Electronica", "Sony", 8000.0);
         assertFalse(sinSku.esValido());
     }
 
     @Test
     public void testNoEsValidoConNombreVacio() {
-        Producto sinNombre = new Producto("", "desc", "AUR-001", "Electronica", "Sony", 8000.0);
+        Producto sinNombre = new Producto("", "desc",10, "AUR-001", "Electronica", "Sony", 8000.0);
         assertFalse(sinNombre.esValido());
     }
     @Test
     public void testNoEsValidoConSKUNull() {
-        Producto sinSku = new Producto("Auriculares", "desc", null, "Electronica", "Sony", 8000.0);
+        Producto sinSku = new Producto("Auriculares", "desc",10, null, "Electronica", "Sony", 8000.0);
         assertFalse(sinSku.esValido());
     }
 
     @Test
     public void testNoEsValidoConNombreNull() {
-        Producto sinNombre = new Producto(null, "desc", "AUR-001", "Electronica", "Sony", 8000.0);
+        Producto sinNombre = new Producto(null, "desc",10, "AUR-001", "Electronica", "Sony", 8000.0);
         assertFalse(sinNombre.esValido());
     }
 }
