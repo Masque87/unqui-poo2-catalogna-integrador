@@ -8,8 +8,8 @@ public class Paquete extends ItemCatalogo {
  * */
 	List <ItemCatalogo> items = new ArrayList<>();
 	
-	public Paquete(String nombre, String descripcion, double descuento) {
-		super(nombre, descripcion);
+	public Paquete(String nombre, String descripcion,int stock, double descuento) {
+		super(nombre, descripcion, stock);
 		this.descuento = descuento;
 	}
 	public void addProducto(ItemCatalogo item) {
