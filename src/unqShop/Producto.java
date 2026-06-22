@@ -14,8 +14,8 @@ public class Producto extends ItemCatalogo {
 	private double precioBase;
 	private Map<String, Object> atributosDinamicos = new HashMap<>();  //atributos dinamicos
 	
-	public Producto(String nombre, String descripcion, String sku, String categoria, String marca, double precioBase){
-		super(nombre, descripcion);
+	public Producto(String nombre, String descripcion,int stock, String sku, String categoria, String marca, double precioBase){
+		super(nombre, descripcion,stock);
 		this.sku = sku;
 		this.categoria = categoria;
 		this.marca = marca;
