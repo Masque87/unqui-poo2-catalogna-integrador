@@ -1,0 +1,12 @@
+santi y santi: Estas son unas cositas que me quedaron sueltas y planeo agregarlas en estos 
+luego. Por lo pronto voy a ponerme a hacer lo de los subsistemas q reaccionan a los 
+cambios de estado. Cualquier duda o cosa que vean para cambiar lo charlamos al ds.
+
+POR HACER:
+-agregar excepcion: no se puede confirmar un pedido vacio.
+-agregar la implementacion de los reembolsos.
+
+(POSIBLES) REFACTOR
+-crear una subclase de excepciones para hacerlas personalizadas.
+-extraer los mensajes de procesarEstado()en el metodo mensajeEstado(),
+ que informe el estado del pedido en cada etapa.
