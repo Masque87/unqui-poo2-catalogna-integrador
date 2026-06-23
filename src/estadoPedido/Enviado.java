@@ -1,7 +1,5 @@
-package unqShop.estadoPedido;
+package estadoPedido;
 import java.time.LocalDate;
-
-import unqShop.Pedido;
 
 public class Enviado extends EstadoPedido {
 

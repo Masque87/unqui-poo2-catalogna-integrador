@@ -1,4 +1,4 @@
-package unqShop;
+package catalogo;
 import java.util.ArrayList;
 import java.util.List;
 public class Paquete extends ItemCatalogo {

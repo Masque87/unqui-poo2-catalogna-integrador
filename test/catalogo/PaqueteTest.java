@@ -1,9 +1,10 @@
-package unqShop;
+package catalogo;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 public class PaqueteTest {
 
@@ -13,7 +14,7 @@ public class PaqueteTest {
 
     @BeforeEach
     public void setUp() {
-        paquete = new Paquete("Pack Audio Móvil", "Pack de audio", 0.15);
+        paquete = new Paquete("Pack Audio Móvil", "Pack de audio", 2, 0.15);
         item1 = mock(ItemCatalogo.class);
         item2 = mock(ItemCatalogo.class);
         when(item1.getPrecioFinal()).thenReturn(8000.0);
@@ -72,7 +73,7 @@ public class PaqueteTest {
 
     @Test
     public void testPrecioFinalSinDescuento() {
-        Paquete sinDescuento = new Paquete("Pack", "desc", 0.0);
+        Paquete sinDescuento = new Paquete("Pack", "desc", 2,  0.0);
         sinDescuento.addProducto(item1);
         assertEquals(8000.0, sinDescuento.getPrecioFinal());
     }
@@ -83,7 +84,7 @@ public class PaqueteTest {
         paquete.addProducto(item1);
         paquete.addProducto(item2);
 
-        Paquete paqueteExterno = new Paquete("Kit Home Office", "Kit completo", 0.10);
+        Paquete paqueteExterno = new Paquete("Kit Home Office", "Kit completo", 2, 0.10);
         paqueteExterno.addProducto(paquete);
 
         // precioBase del externo = precioFinal del paquete interno = 8755.0

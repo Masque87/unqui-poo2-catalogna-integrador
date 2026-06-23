@@ -1,16 +1,19 @@
-package unqShop;
+package estadoPedido;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import unqShop.estadoPedido.Borrador;
-import unqShop.estadoPedido.Cancelado;
-import unqShop.estadoPedido.Confirmado;
-import unqShop.estadoPedido.EnPreparacion;
-import unqShop.estadoPedido.Entregado;
-import unqShop.estadoPedido.Enviado;
+import catalogo.ItemCatalogo;
+import catalogo.Producto;
+import estadoPedido.Borrador;
+import estadoPedido.Cancelado;
+import estadoPedido.Confirmado;
+import estadoPedido.EnPreparacion;
+import estadoPedido.Entregado;
+import estadoPedido.Enviado;
+import estadoPedido.Pedido;
 
 
 

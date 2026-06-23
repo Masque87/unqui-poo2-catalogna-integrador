@@ -1,4 +1,4 @@
-package unqShop;
+package catalogo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,17 +39,28 @@ public class Producto extends ItemCatalogo {
 	}
 	
 	private void validarExisteAtributo(String nombre) {
-		//valida la existencia de un atributo dinámico
+		//indica la existencia de un atributo dinámico
 	    if (!atributosDinamicos.containsKey(nombre)) {
 	        throw new IllegalArgumentException("El atributo '" + nombre + "' no existe");
 	    }
 	}
 	public boolean esValido() {
-	    // valida atributos fijos
-	    if (sku == null || sku.isBlank()) return false;
-	    if (nombre == null || nombre.isBlank()) return false;
-	    
-	    // valida que ningún atributo dinámico tenga valor null
+	    // retorna si los atributos son validos 
+	   return esSkuValido() && esNombreValido() && esAtributoDinamicoValido();  
+	}
+	
+	private boolean esSkuValido() {
+		//responde si un sku es valido
+		return (sku != null &&  !sku.isBlank());
+	}
+	
+	private boolean esNombreValido() {
+		//responde si un nombre es valido
+		return (nombre != null && !nombre.isBlank());
+	}
+	
+	private boolean esAtributoDinamicoValido() {
+		 // valida que ningún atributo dinámico tenga valor null
 	    for (Object valor : atributosDinamicos.values()) {
 	        if (valor == null) return false;
 	    }

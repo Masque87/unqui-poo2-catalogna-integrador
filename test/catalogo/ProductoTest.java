@@ -1,4 +1,4 @@
-package unqShop;
+package catalogo;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;

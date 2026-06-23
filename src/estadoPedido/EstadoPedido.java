@@ -1,6 +1,4 @@
-package unqShop.estadoPedido;
-
-import unqShop.Pedido;
+package estadoPedido;
 
 public abstract class EstadoPedido {
 	protected Pedido pedido;

@@ -1,4 +1,4 @@
-package unqShop;
+package catalogo;
 
 public abstract class ItemCatalogo {
 		/* Propósito: comportamiento común a implementar por todos los elementos del catálogo.

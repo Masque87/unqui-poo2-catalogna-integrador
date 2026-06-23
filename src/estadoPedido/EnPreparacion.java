@@ -1,6 +1,4 @@
-package unqShop.estadoPedido;
-
-import unqShop.Pedido;
+package estadoPedido;
 
 public class EnPreparacion extends EstadoPedido {
 

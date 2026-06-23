@@ -1,6 +1,9 @@
-package unqShop;
+package estadoPedido;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import catalogo.ItemCatalogo;
 
 public class Pedido {
 
