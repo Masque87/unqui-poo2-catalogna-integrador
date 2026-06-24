@@ -7,13 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import catalogo.ItemCatalogo;
 import catalogo.Producto;
-import estadoPedido.Borrador;
-import estadoPedido.Cancelado;
-import estadoPedido.Confirmado;
-import estadoPedido.EnPreparacion;
-import estadoPedido.Entregado;
-import estadoPedido.Enviado;
-import estadoPedido.Pedido;
+
 
 
 

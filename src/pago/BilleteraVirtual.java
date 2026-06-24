@@ -1,23 +1,35 @@
 package pago;
 
 public class BilleteraVirtual extends MedioDePago {
+	//Proposito: Modelar Tarjetas de credito como un medio de pago valido para unqShop
+	BilleteraVirtualAPI api;
 
+	BilleteraVirtual(BilleteraVirtualAPI api, double monto){
+		super(monto);
+		this.api = api;
+	}
 	@Override
 	protected void validarDatos() {
-		// TODO Auto-generated method stub
-
+		// validar Saldo suficiente en cuenta (*)
+		api.validarSaldo(monto);
 	}
 
 	@Override
 	protected void reservarFondos() {
-		// TODO Auto-generated method stub
-
+		//realizar Bloqueo del saldo hasta confirmar (*)
+		api.bloquearSaldo(monto);
 	}
 
 	@Override
 	protected void ejecutarTransaccion() {
-		// TODO Auto-generated method stub
-
+		// realizar Acreditación en tiempo real al vendedor (*)
+		api.confirmarAcreditacion();
 	}
-
+	@Override
+	protected void notificarResultado() {
+		//realizar Notificación push. (*)
+	    api.enviarNotificacionPush(); 
+	}
 }
+
+ 

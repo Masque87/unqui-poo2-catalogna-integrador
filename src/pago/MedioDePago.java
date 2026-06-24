@@ -1,6 +1,12 @@
 package pago;
 
 public abstract class MedioDePago {
+//Proposito: Modelar procedimientos comunes entre distintos medios de pago
+	protected double monto;
+	
+	MedioDePago(double monto) {
+        this.monto = monto;
+    }
 	public final void procesarPago() {
         validarDatos();
         reservarFondos();
