@@ -5,6 +5,7 @@ public class EnvioExpress extends MetodoEnvio {
 	@Override
 	public float getCosto() {
 		//Calcula el costo en funcion del valor monetario total del pedido.
+		//Hacer la vinculacion con el pedido y reemplazar los argumentos por los del pedido.
 		return EnvioExpress.calcularCosto(float precio);
 	}
 	

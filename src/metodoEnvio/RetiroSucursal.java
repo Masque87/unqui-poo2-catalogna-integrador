@@ -9,6 +9,7 @@ public class RetiroSucursal extends MetodoEnvio {
 	}
 
 	public String getTiempoDeEntrega() {
+		//Hacer la vinculacion con la sucursal a la que se realiza el pedido y reemplazar los argumentos por los del pedido y la sucursal.
 		return (Sucursal.tieneStock(pedido)) ? "Envio inmediato." : "Entrega hasta 3 dias despues de la compra.";
 	}
 }
