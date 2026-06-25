@@ -1,29 +1,32 @@
 package pago;
 
 public class BilleteraVirtual extends MedioDePago {
-	//Proposito: Modelar Tarjetas de credito como un medio de pago valido para unqShop
-	BilleteraVirtualAPI api;
+	//Proposito: Modelar Billetera Virtual como un medio de pago valido para unqShop
+	private BilleteraVirtualAPI api;
 
-	BilleteraVirtual(BilleteraVirtualAPI api, double monto){
+	public BilleteraVirtual(BilleteraVirtualAPI api, double monto){
 		super(monto);
 		this.api = api;
 	}
 	@Override
 	protected void validarDatos() {
 		// validar Saldo suficiente en cuenta (*)
-		api.validarSaldo(monto);
+		boolean valido = api.validarSaldo(monto);
+		validarResultado(valido, "Saldo insuficiente");
 	}
 
 	@Override
 	protected void reservarFondos() {
 		//realizar Bloqueo del saldo hasta confirmar (*)
-		api.bloquearSaldo(monto);
+		boolean reservado = api.bloquearSaldo(monto);
+		validarResultado(reservado, "No se pudo bloquear el saldo");
 	}
 
 	@Override
 	protected void ejecutarTransaccion() {
 		// realizar Acreditación en tiempo real al vendedor (*)
-		api.confirmarAcreditacion();
+		boolean ejecutado = api.confirmarAcreditacion();
+		validarResultado(ejecutado, "La acreditación no pudo completarse");
 	}
 	@Override
 	protected void notificarResultado() {
