@@ -10,7 +10,6 @@ import catalogo.Producto;
 
 
 
-
 class PedidoTest {
 
 	protected Pedido pedido;
@@ -29,11 +28,11 @@ class PedidoTest {
 	void testElEstadoInicialDeUnPedidoEsBorrador() {
 		assertTrue(pedido.getEstado() instanceof Borrador);
 	}
+	
 	@Test 
 	void testCancelarPedidoEnEtapaBorrador(){
 		pedido.cancelarPedido();
-		assertTrue(pedido.getEstado() instanceof Cancelado);
-		
+		assertTrue(pedido.getEstado() instanceof Cancelado);	
 	}
 
 	@Test
@@ -110,15 +109,28 @@ class PedidoTest {
 	}
 	
 	@Test
-	void testNoSePuedenAgregarItemsSinStock(){
-		producto.setStock(0);
-		assertThrows(IllegalArgumentException.class, () -> { pedido.addItem(producto); });
-	}
-	
-	@Test
 	void testNoSePuedeRemoverProductosEnLaEtapaDeConfirmado() {
 		pedido.siguienteEstado();
-		assertThrows(IllegalArgumentException.class, () -> { pedido.removeItem(producto); });
+		assertThrows(IllegalArgumentException.class, () -> {
+			pedido.removeItem(producto); });
 	}
 		
+
+	@Test
+	void testNoSePuedenAgregarItemsSinStock(){
+		producto.setStock(0);
+		assertThrows(IllegalArgumentException.class, () -> { 
+			pedido.addItem(producto); });
+	}
+	
+	@Test 
+	void testNoSePuedenRemoverItemsQueNoEstenEnElPedido() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			pedido.removeItem(producto);});
+	}
 }
+	
+
+	
+
+

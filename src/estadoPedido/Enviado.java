@@ -1,6 +1,8 @@
 package estadoPedido;
 import java.time.LocalDate;
 
+import notificacionesPedido.NotificadorEmail;
+
 public class Enviado extends EstadoPedido {
 
 	public Enviado(Pedido pedido) {
@@ -22,6 +24,11 @@ public class Enviado extends EstadoPedido {
 		this.pedido.reembolsoProductos();
 		this.pedido.cambiarEstado(new Cancelado(pedido, this.mensajeAlCancelar()));
 
+	}
+	
+	@Override
+	public void notificarAlCliente(NotificadorEmail n) {
+		n.notificarPedidoEnviado();
 	}
 	
 	public String mensajeAlCancelar() {

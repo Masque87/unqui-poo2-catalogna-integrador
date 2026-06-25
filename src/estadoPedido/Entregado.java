@@ -1,6 +1,8 @@
 package estadoPedido;
 import java.time.LocalDate;
 
+import notificacionesPedido.NotificadorEmail;
+
 public class Entregado extends EstadoPedido {
 
 	public Entregado(Pedido pedido) {
@@ -19,6 +21,10 @@ public class Entregado extends EstadoPedido {
 	@Override
 	public void cancelarPedido() {
 		//Estado terminal.
+	}
+	
+	public void notificarPedidoEntregado(NotificadorEmail n) {
+		n.notificarPedidoEntregado();
 	}
 
 }

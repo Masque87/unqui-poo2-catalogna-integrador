@@ -2,25 +2,33 @@ package estadoPedido;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import catalogo.ItemCatalogo;
+import notificacionesPedido.Notificable;
 
 public class Pedido {
 
-	protected EstadoPedido estado;
+	protected Estado estado;
+	protected List<Notificable> notificables = new ArrayList<>();
 	protected List<ItemCatalogo> items = new ArrayList<>();
 	
 	public Pedido () {
 		this.estado = new Borrador(this);
 	}
 	
+	public void addNotificable(Notificable n) {
+		notificables.add(n);
+	}
+	
+	public void removeNotificable(Notificable n) {
+		notificables.remove(n);
+	}
 
-	public EstadoPedido getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 	
-	
-	public void cambiarEstado(EstadoPedido estadoDelPedido) {
+	public void cambiarEstado(Estado estadoDelPedido) {
+		this.informarCambioDeEstado(estado, estadoDelPedido);
 		this.estado = estadoDelPedido;
 	}
 	
@@ -32,6 +40,7 @@ public class Pedido {
 	
 	public void removeItem(ItemCatalogo item) {
 		this.validarPuedeRemoverItems();
+		this.validarItemEstaEnElPedido(item);
 		this.items.remove(item);
 	}
 	
@@ -65,6 +74,12 @@ public class Pedido {
 		for (ItemCatalogo i : items) {
 			i.aumentarStock();
 		}
+	}	
+	
+	public void informarCambioDeEstado(Estado anterior, Estado nuevo) {
+		for(Notificable n : notificables) {
+			n.recibir(anterior, nuevo);
+		}
 	}
 
 	//validaciones
@@ -85,7 +100,10 @@ public class Pedido {
 			throw new IllegalArgumentException("No se pueden remover items en esta fase del pedido");
 		}
 	}
-
-
 	
+	private void validarItemEstaEnElPedido(ItemCatalogo i) {
+		if(!items.contains(i)) {
+			throw new IllegalArgumentException("El item no está en el pedido");
+		}
+	}
 }
