@@ -1,54 +1,94 @@
 package pago;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BilleteraVirtualTest {
+public class BilleteraVirtualTest {
 
-	@Test
-	void testValidarDatos() {
-		fail("Not yet implemented");
-	}
+    private BilleteraVirtualAPI apiMock;
+    private BilleteraVirtual billetera;
+    private final double MONTO = 5000.0;
 
-	@Test
-	void testReservarFondos() {
-		fail("Not yet implemented");
-	}
+    @BeforeEach
+    public void setUp() {
+        apiMock = mock(BilleteraVirtualAPI.class);
+        billetera = new BilleteraVirtual(apiMock, MONTO);
+    }
 
-	@Test
-	void testEjecutarTransaccion() {
-		fail("Not yet implemented");
-	}
+    //happy path
 
-	@Test
-	void testNotificarResultado() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testProcesarPagoExitoso() {
+        when(apiMock.validarSaldo(MONTO)).thenReturn(true);
+        when(apiMock.bloquearSaldo(MONTO)).thenReturn(true);
+        when(apiMock.confirmarAcreditacion()).thenReturn(true);
+        when(apiMock.enviarNotificacionPush()).thenReturn(true);
 
-	@Test
-	void testBilleteraVirtual() {
-		fail("Not yet implemented");
-	}
+        billetera.procesarPago();
 
-	@Test
-	void testMedioDePago() {
-		fail("Not yet implemented");
-	}
+        verify(apiMock).validarSaldo(MONTO);
+        verify(apiMock).bloquearSaldo(MONTO);
+        verify(apiMock).confirmarAcreditacion();
+        verify(apiMock).enviarNotificacionPush();
+    }
 
-	@Test
-	void testProcesarPago() {
-		fail("Not yet implemented");
-	}
+    //sad path progresivo
 
-	@Test
-	void testGenerarCodigoTransaccion() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testSaldoInsuficienteYLanzaExcepcion() {
+        when(apiMock.validarSaldo(MONTO)).thenReturn(false);
 
-	@Test
-	void testValidarResultado() {
-		fail("Not yet implemented");
-	}
+        assertThrows(PagoException.class, () -> billetera.procesarPago());
 
+        //verificar que no avance
+        verify(apiMock, never()).bloquearSaldo(anyDouble());
+        verify(apiMock, never()).confirmarAcreditacion();
+    }
+
+    @Test
+    public void testNoSePudoBloquearSaldoYLanzaExcepcion() {
+        when(apiMock.validarSaldo(MONTO)).thenReturn(true);
+        when(apiMock.bloquearSaldo(MONTO)).thenReturn(false);
+
+        assertThrows(PagoException.class, () -> billetera.procesarPago());
+
+        verify(apiMock, never()).confirmarAcreditacion();
+    }
+
+    @Test
+    public void testAcreditacionFallaYLanzaExcepcion() {
+        when(apiMock.validarSaldo(MONTO)).thenReturn(true);
+        when(apiMock.bloquearSaldo(MONTO)).thenReturn(true);
+        when(apiMock.confirmarAcreditacion()).thenReturn(false);
+
+        assertThrows(PagoException.class, () -> billetera.procesarPago());
+
+        verify(apiMock, never()).enviarNotificacionPush();
+    }
+
+    //faltantes
+
+    @Test
+    public void testValidarDatosLlamaApiConMontoCorrecto() {
+        when(apiMock.validarSaldo(MONTO)).thenReturn(true);
+        when(apiMock.bloquearSaldo(MONTO)).thenReturn(true);
+        when(apiMock.confirmarAcreditacion()).thenReturn(true);
+
+        billetera.procesarPago();
+
+        verify(apiMock).validarSaldo(MONTO);
+    }
+
+    @Test
+    public void testReservarFondosLlamaApiConMontoCorrecto() {
+        when(apiMock.validarSaldo(MONTO)).thenReturn(true);
+        when(apiMock.bloquearSaldo(MONTO)).thenReturn(true);
+        when(apiMock.confirmarAcreditacion()).thenReturn(true);
+
+        billetera.procesarPago();
+
+        verify(apiMock).bloquearSaldo(MONTO);
+    }
 }
