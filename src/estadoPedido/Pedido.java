@@ -3,23 +3,32 @@ package estadoPedido;
 import java.util.ArrayList;
 import java.util.List;
 import catalogo.ItemCatalogo;
+import notificacionesPedido.Notificable;
 
 public class Pedido {
 
 	protected Estado estado;
+	protected List<Notificable> notificables = new ArrayList<>();
 	protected List<ItemCatalogo> items = new ArrayList<>();
 	
 	public Pedido () {
 		this.estado = new Borrador(this);
 	}
 	
+	public void addNotificable(Notificable n) {
+		notificables.add(n);
+	}
+	
+	public void removeNotificable(Notificable n) {
+		notificables.remove(n);
+	}
 
 	public Estado getEstado() {
 		return estado;
 	}
 	
-	
 	public void cambiarEstado(Estado estadoDelPedido) {
+		this.informarCambioDeEstado(estado, estadoDelPedido);
 		this.estado = estadoDelPedido;
 	}
 	
@@ -64,6 +73,12 @@ public class Pedido {
 		//Aumenta el stock de los productos que estaban en un pedido en estado CONFIRMADO
 		for (ItemCatalogo i : items) {
 			i.aumentarStock();
+		}
+	}	
+	
+	public void informarCambioDeEstado(Estado anterior, Estado nuevo) {
+		for(Notificable n : notificables) {
+			n.recibir(anterior, nuevo);
 		}
 	}
 
