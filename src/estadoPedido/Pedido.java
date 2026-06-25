@@ -2,12 +2,11 @@ package estadoPedido;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import catalogo.ItemCatalogo;
 
 public class Pedido {
 
-	protected EstadoPedido estado;
+	protected Estado estado;
 	protected List<ItemCatalogo> items = new ArrayList<>();
 	
 	public Pedido () {
@@ -15,12 +14,12 @@ public class Pedido {
 	}
 	
 
-	public EstadoPedido getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 	
 	
-	public void cambiarEstado(EstadoPedido estadoDelPedido) {
+	public void cambiarEstado(Estado estadoDelPedido) {
 		this.estado = estadoDelPedido;
 	}
 	
@@ -32,6 +31,7 @@ public class Pedido {
 	
 	public void removeItem(ItemCatalogo item) {
 		this.validarPuedeRemoverItems();
+		this.validarItemEstaEnElPedido(item);
 		this.items.remove(item);
 	}
 	
@@ -85,7 +85,10 @@ public class Pedido {
 			throw new IllegalArgumentException("No se pueden remover items en esta fase del pedido");
 		}
 	}
-
-
 	
+	private void validarItemEstaEnElPedido(ItemCatalogo i) {
+		if(!items.contains(i)) {
+			throw new IllegalArgumentException("El item no está en el pedido");
+		}
+	}
 }
