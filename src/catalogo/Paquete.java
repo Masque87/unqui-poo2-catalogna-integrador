@@ -8,8 +8,8 @@ public class Paquete extends ItemCatalogo {
  * */
 	List <ItemCatalogo> items = new ArrayList<>();
 	
-	public Paquete(String nombre, String descripcion,int stock, double descuento) {
-		super(nombre, descripcion, stock);
+	public Paquete(String nombre, String descripcion,int stock, double descuento, String categoria) {
+		super(nombre, descripcion, stock, categoria);
 		this.descuento = descuento;
 	}
 	public void addProducto(ItemCatalogo item) {
@@ -26,7 +26,7 @@ public class Paquete extends ItemCatalogo {
 	        throw new IllegalArgumentException("El item no pertenece a este paquete");
 	    }
 	}
-	
+
 	@Override
 	public double getPrecioBase() {
 		double suma = 0;

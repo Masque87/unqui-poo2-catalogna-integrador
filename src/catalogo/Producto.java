@@ -9,15 +9,13 @@ public class Producto extends ItemCatalogo {
 	   
 	 */
 	private String sku;//Stock Keep Unit / Identificador
-	private String categoria;
 	private String marca;
 	private double precioBase;
 	private Map<String, Object> atributosDinamicos = new HashMap<>();  //atributos dinamicos
 	
 	public Producto(String nombre, String descripcion,int stock, String sku, String categoria, String marca, double precioBase){
-		super(nombre, descripcion,stock);
+		super(nombre, descripcion,stock, categoria);
 		this.sku = sku;
-		this.categoria = categoria;
 		this.marca = marca;
 		this.precioBase = precioBase;
 	}
@@ -46,7 +44,7 @@ public class Producto extends ItemCatalogo {
 	}
 	public boolean esValido() {
 	    // retorna si los atributos son validos 
-	   return esSkuValido() && esNombreValido() && esAtributoDinamicoValido();  
+	   return super.esValido() && esSkuValido() && esAtributoDinamicoValido();  
 	}
 	
 	private boolean esSkuValido() {
@@ -54,10 +52,6 @@ public class Producto extends ItemCatalogo {
 		return (sku != null &&  !sku.isBlank());
 	}
 	
-	private boolean esNombreValido() {
-		//responde si un nombre es valido
-		return (nombre != null && !nombre.isBlank());
-	}
 	
 	private boolean esAtributoDinamicoValido() {
 		 // valida que ningún atributo dinámico tenga valor null
@@ -84,9 +78,5 @@ public class Producto extends ItemCatalogo {
 	public String getSKU() {
 		//devuelve la sku del producto
 		return this.sku;
-	}
-	public String getCategoria() {
-		//devuelve la categoria del producto
-		return this.categoria;
 	}
 }

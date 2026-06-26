@@ -9,9 +9,36 @@ public abstract class ItemCatalogo {
     protected String descripcion;
     protected double descuento; //descuento en porcentaje
     protected int stock;
+    protected String categoria;
+
+    public ItemCatalogo(String nombre, String descripcion, int stock, String categoria) {
+    	//constructor
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.stock = stock;
+        this.categoria = categoria;
+        descuento = 0;
+    }
+    
+    public boolean esValido() {
+    	 // indica si los atributos son validos
+    	return esNombreValido() && esCategoriaValida(); 
+    }
+    
+    private boolean esNombreValido() {
+		//responde si un nombre es valido
+		return (nombre != null && !nombre.isBlank());
+	}
+    
+    private boolean esCategoriaValida() {
+    	//responde si la categoria es valida
+    	return categoria != null && !categoria.isBlank();
+    }
 	
+    
     public String getNombre() { return nombre; }
     public String getDescripcion() { return descripcion; }
+    public String getCategoria() {return categoria;}
     public double getDescuento() { return descuento; }
     public int getStock() { return stock; }
     public abstract double getPrecioBase();
@@ -35,11 +62,6 @@ public abstract class ItemCatalogo {
     public void aumentarStock() {
     	stock += 1;
     }
+    
 
-    public ItemCatalogo(String nombre, String descripcion, int stock) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.stock = stock;
-        descuento = 0;
-    }
 }
