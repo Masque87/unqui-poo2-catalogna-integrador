@@ -1,7 +1,7 @@
 package catalogo;
 import java.util.ArrayList;
-import busqueda.CriterioBusqueda;
 import java.util.List;
+import busqueda.CriterioBusqueda;
 
 public class Catalogo {
 	//Proposito: modelar la clase Catalogo de UNQ-shop, contando con el catalogo de items de la compañia.

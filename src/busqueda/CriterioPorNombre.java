@@ -12,6 +12,6 @@ public class CriterioPorNombre implements CriterioBusqueda {
 
     @Override
     public boolean cumple(ItemCatalogo item) {
-        return item.getNombre().toLowerCase().contains(nombreABuscar.toLowerCase()); //revisar
+        return item.getNombre().toLowerCase().contains(nombreABuscar.toLowerCase()); 
     }
 }
