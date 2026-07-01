@@ -10,7 +10,7 @@ public class Confirmado extends EstadoPedido {
 	
 	@Override
 	public void procesarEstado() {
-		pedido.decrementarStockDeLosPedidos();
+		pedido.decrementarStockDeLosItems();
 	}
 	
 	@Override

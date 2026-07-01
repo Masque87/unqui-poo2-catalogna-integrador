@@ -95,6 +95,13 @@ public class Pedido {
 		//Reembolsa al cliente la suma de los productos en el pedido.
 	}
 	
+	public void decrementarStockDeLosItems() {
+		//Aumenta el stock de los productos que estaban en un pedido en estado CONFIRMADO
+		for (ItemCatalogo i : items) {
+			i.decrementarStock();
+		}
+	}
+	
 	public void restablecerStockDeLosItems() {
 		//Aumenta el stock de los productos que estaban en un pedido en estado CONFIRMADO
 		for (ItemCatalogo i : items) {
