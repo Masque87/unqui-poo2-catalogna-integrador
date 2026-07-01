@@ -1,4 +1,5 @@
 package estadoPedido;
+import notificacionesPedido.*;
 
 public class Cancelado extends EstadoPedido {
 
@@ -17,11 +18,19 @@ public class Cancelado extends EstadoPedido {
 	@Override
 	public void siguienteEstado() {
 		//Estado terminal.
+		throw new IllegalStateException("Este pedido fue cancelado.");
 	}
 
 	@Override
 	public void cancelarPedido() {
 		//Estado terminal.
+		throw new IllegalStateException("Este pedido ya ha sido cancelado");
 	}
+	
+	@Override
+	public void enviarCorreoConCupon(Fidelizacion f){
+		f.enviarCuponAlCliente();
+	}
+	
 
 }

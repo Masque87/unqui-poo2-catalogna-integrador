@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import catalogo.ItemCatalogo;
 import notificacionesPedido.Notificable;
+import metodoEnvio.*;
 import java.util.stream.Collectors;
 
 public class Pedido {
@@ -11,8 +12,10 @@ public class Pedido {
 	protected Estado estado;
 	protected List<Notificable> notificables = new ArrayList<>();
 	protected List<ItemCatalogo> items = new ArrayList<>();
+	protected MetodoEnvio metodoDeEnvio;
 	
-	public Pedido () {
+	public Pedido (MetodoEnvio metodoDeEnvio) {
+		this.setMetodoDeEnvio(metodoDeEnvio);
 		this.estado = new Borrador(this);
 	}
 	
@@ -23,9 +26,17 @@ public class Pedido {
 	public void removeNotificable(Notificable n) {
 		notificables.remove(n);
 	}
+	
+	public void setMetodoDeEnvio(MetodoEnvio metodoDeEnvio) {
+		this.metodoDeEnvio = metodoDeEnvio;
+	}
 
 	public Estado getEstado() {
 		return estado;
+	}
+	
+	public List<Notificable> getNotificables() {
+		return this.notificables;
 	}
 	
 	public void cambiarEstado(Estado estadoDelPedido) {
@@ -46,6 +57,7 @@ public class Pedido {
 	}
 	
 	public void siguienteEstado() {
+		this.validarQueElPedidoNoEstéVacío();
 		estado.siguienteEstado();
 		estado.procesarEstado();
 		
@@ -55,11 +67,22 @@ public class Pedido {
 		estado.cancelarPedido();
 		estado.procesarEstado();
 	}
+
 	
-	public void decrementarStockDeLosPedidos() {
-		for (ItemCatalogo i : items) {
-			i.decrementarStock();
-		}
+	public void reembolsar(Double monto) {
+		//Reembolsa al cliente el monto correspondiente y genera una nota de credito.
+		this.generarNotaDeCredito(monto);
+	}
+	
+	public String generarNotaDeCredito(Double monto) {
+		//Genera una nota de credito informando el monto reembolsado al cliente
+		return("Se le reembolsó $" + monto +" al cliente");
+	}
+	
+	public Double costoTotalProductos() {
+		//Devuelve la suma de todos los productos en el pedido
+		Double total = items.stream().mapToDouble(ItemCatalogo::getPrecioFinal).sum();
+		return (total);
 	}
 	
 	public void reembolsoTotal() {
@@ -110,6 +133,14 @@ public class Pedido {
 		}
 	}
 
+		
+		private void validarQueElPedidoNoEstéVacío() {
+		if(items.isEmpty()) {
+			throw new IllegalStateException("El pedido se encuentra vacío");
+		}
+	}
+		
+
 	public double getPrecioFinal() {
 		double resultado = 0;
 		for(ItemCatalogo i : items) {
@@ -125,4 +156,6 @@ public class Pedido {
 		}
 		return resultado;
 	}
+	
+
 }
