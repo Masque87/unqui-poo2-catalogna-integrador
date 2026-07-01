@@ -27,21 +27,13 @@ class EnvioTest {
 		producto1 = new Producto("Celular", "Smartphone",10, "Cel-001", "Electronica", "Samsung", 10000.0, 2);
 		pedido.addItem(producto);
 		pedido.addItem(producto1);
-		envioEstandar = new EnvioEstandar(pedido);
 		envioExpress = new EnvioExpress(pedido);
 		retiroSucursal = new RetiroSucursal(pedido);
 	}
 
 	@Test
 	void testElEnvioEstandarCalculaElCostoEnBaseAlPesoYDistancia() {	
-		//Test Double Configuration
-		when(envioEstandar.getCosto()).thenReturn(1300.0);
-				
-		//Exercise
-		;
-				
-		//Verify
-		verify(otroGuerrero, times(1)).descontarVida(500);
+		fail("Not yet implemented");
 	}
 	
 	@Test
@@ -54,7 +46,7 @@ class EnvioTest {
 		//Test Double Configuration
 		when(retiroSucursal.conEntregaInmediata()).thenReturn(true);
 		
-		assertEquals("Envio inmediato.", retiroSucursal.getTiempoDeEntrega());
+		assertEquals("Entrega inmediata.", retiroSucursal.getTiempoDeEntrega());
 	}
 	
 	@Test

@@ -5,7 +5,7 @@ import estadoPedido.Pedido;
 public class RetiroSucursal extends MetodoEnvio {
 	
 	protected Sucursal sucursal;
-	protected String mensajeConStock = "Envio inmediato.";
+	protected String mensajeConStock = "Entrega inmediata";
 	protected String mensajeSinStock = "Entrega hasta 3 dias despues de la compra.";
 	
 	@Override
@@ -24,7 +24,7 @@ public class RetiroSucursal extends MetodoEnvio {
 	}
 	
 	public boolean conEntregaInmediata() {
-		return (sucursal.tieneStock())
+		return (sucursal.tieneStock(pedido));
 	}
 	
 	public RetiroSucursal(Pedido pedido) {
