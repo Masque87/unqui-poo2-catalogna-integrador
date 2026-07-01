@@ -16,13 +16,13 @@ public class CriterioPorDisponibilidadTest {
 
     @Test
     void cumpleConProductoConStock() {
-        producto = new Producto("Auriculares", "desc", 10, "SKU001", "Electronica", "Sony", 8000);
+        producto = new Producto("Auriculares", "desc", 10, "SKU001", "Electronica", "Sony", 8000, 2.5f);
         assertTrue(criterio.cumple(producto));
     }
 
     @Test
     void nocumpleConProductoSinStock() {
-        producto = new Producto("Auriculares", "desc", 0, "SKU001", "Electronica", "Sony", 8000);
+        producto = new Producto("Auriculares", "desc", 0, "SKU001", "Electronica", "Sony", 8000, 2.5f);
         assertFalse(criterio.cumple(producto));
     }
 }

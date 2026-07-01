@@ -14,13 +14,8 @@ public class Producto extends ItemCatalogo {
 	private float peso;
 	private Map<String, Object> atributosDinamicos = new HashMap<>();  //atributos dinamicos
 	
-<<<<<<< HEAD
-	public Producto(String nombre, String descripcion,int stock, String sku, String categoria, String marca, double precioBase){
-		super(nombre, descripcion,stock, categoria);
-=======
 	public Producto(String nombre, String descripcion,int stock, String sku, String categoria, String marca, double precioBase, float peso){
-		super(nombre, descripcion,stock);
->>>>>>> 00f1c66 (agregado atributo de peso a Items para ser implementado por los metodos de envio)
+		super(nombre, descripcion,stock, categoria);
 		this.sku = sku;
 		this.marca = marca;
 		this.precioBase = precioBase;
@@ -91,8 +86,7 @@ public class Producto extends ItemCatalogo {
 		//devuelve la sku del producto
 		return this.sku;
 	}
-<<<<<<< HEAD
-=======
+	
 	public String getCategoria() {
 		//devuelve la categoria del producto
 		return this.categoria;
@@ -102,5 +96,4 @@ public class Producto extends ItemCatalogo {
 		//devuelve el peso del producto
 		return this.peso;
 	}
->>>>>>> 00f1c66 (agregado atributo de peso a Items para ser implementado por los metodos de envio)
 }

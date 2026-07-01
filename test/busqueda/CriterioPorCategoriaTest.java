@@ -10,7 +10,7 @@ public class CriterioPorCategoriaTest {
 
     @BeforeEach
     void setUp() {
-        producto = new Producto("Auriculares", "desc", 10, "SKU001", "Electronica", "Sony", 8000);
+        producto = new Producto("Auriculares", "desc", 10, "SKU001", "Electronica", "Sony", 8000, 2.5f);
     }
 
     @Test

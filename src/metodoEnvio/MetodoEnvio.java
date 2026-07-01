@@ -16,6 +16,7 @@ public abstract class MetodoEnvio {
 	Pedido pedido;
 	public abstract String getTiempoDeEntrega();
 	public abstract float getCosto();
+	public abstract String getDireccionDeEnvio();
 	
 	
 	public MetodoEnvio(Pedido pedido) {

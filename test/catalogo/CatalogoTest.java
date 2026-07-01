@@ -13,8 +13,8 @@ public class CatalogoTest {
     @BeforeEach
     void setUp() {
         catalogo = new Catalogo();
-        auriculares = new Producto("Auriculares Bluetooth", "desc", 10, "SKU001", "Electronica", "Sony", 8000);
-        teclado = new Producto("Teclado Mecánico", "desc", 5, "SKU002", "Electronica", "Logitech", 12000);
+        auriculares = new Producto("Auriculares Bluetooth", "desc", 10, "SKU001", "Electronica", "Sony", 8000, 2.5f);
+        teclado = new Producto("Teclado Mecánico", "desc", 5, "SKU002", "Electronica", "Logitech", 12000, 3.0f);
         catalogo.agregar(auriculares);
         catalogo.agregar(teclado);
     }
