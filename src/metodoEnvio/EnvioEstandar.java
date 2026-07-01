@@ -4,19 +4,25 @@ import estadoPedido.Pedido;
 
 public class EnvioEstandar extends MetodoEnvio {
 	CorreoArgentina gestorDeCorreo;
+	Direccion direccionDelEnvio;
 
+	public EnvioEstandar(Direccion direccion) {
+		this.direccionDelEnvio = direccion;
+	}
+	
 	@Override
-	public float getCosto() {
+	public float calcularCosto(Pedido pedido) {
 		//Calcula el costo en funcion del peso total del pedido (kilogramos) y la direccion de entrega (kilometros)
 		//Hacer la vinculacion con el pedido y reemplazar los argumentos por los del pedido.
 		return gestorDeCorreo.estimarEnvio(pedido.getPeso(), getDireccionDeEnvio());
 	}
 	
-	public String getTiempoDeEntrega() {
+	public String getTiempoDeEntrega(Pedido pedido) {
 		return "Entrega de 5 a 7 dias habiles despues de la compra.";
 	}
 
-	public EnvioEstandar(Pedido pedido, Sucursal sucursal) {
-		super(pedido);
+	public Direccion getDireccionDeEnvio() {
+		return this.direccionDelEnvio;
 	}
+	
 }

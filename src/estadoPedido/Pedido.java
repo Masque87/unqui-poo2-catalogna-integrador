@@ -86,13 +86,15 @@ public class Pedido {
 	}
 	
 	public void reembolsoTotal() {
-		//TODO
 		//Rembolsa al cliente tanto el valor de los productos como el valor del envio.
+		double total = this.costoTotalProductos() + metodoDeEnvio.calcularCosto(this);
+		this.reembolsar(total);
 	}
 	
 	public void reembolsoProductos () {
-		//TODO
 		//Reembolsa al cliente la suma de los productos en el pedido.
+		double total = this.costoTotalProductos();
+		this.reembolsar(total);
 	}
 	
 	public void decrementarStockDeLosItems() {

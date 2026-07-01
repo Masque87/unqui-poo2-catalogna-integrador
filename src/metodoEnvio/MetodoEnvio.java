@@ -13,16 +13,6 @@ public abstract class MetodoEnvio {
 		Por lo tanto, no exige un control de ningun tipo, su unico proposito es informarle al usuario cuando llega su pedido, segun
 		el metodo de envio elegido.
 	*/
-	Pedido pedido;
-	CorreoArgentina sucursal;
-	public abstract String getTiempoDeEntrega();
-	public abstract float getCosto();
-	public abstract String getDireccionDeEnvio();
-	
-	
-	public MetodoEnvio(Pedido pedido) {
-		this.pedido = pedido;
-	}
-	
-	
+	public abstract String getTiempoDeEntrega(Pedido pedido);
+	public abstract float calcularCosto(Pedido pedido);
 }
