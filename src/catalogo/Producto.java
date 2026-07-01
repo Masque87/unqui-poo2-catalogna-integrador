@@ -11,13 +11,20 @@ public class Producto extends ItemCatalogo {
 	private String sku;//Stock Keep Unit / Identificador
 	private String marca;
 	private double precioBase;
+	private float peso;
 	private Map<String, Object> atributosDinamicos = new HashMap<>();  //atributos dinamicos
 	
+<<<<<<< HEAD
 	public Producto(String nombre, String descripcion,int stock, String sku, String categoria, String marca, double precioBase){
 		super(nombre, descripcion,stock, categoria);
+=======
+	public Producto(String nombre, String descripcion,int stock, String sku, String categoria, String marca, double precioBase, float peso){
+		super(nombre, descripcion,stock);
+>>>>>>> 00f1c66 (agregado atributo de peso a Items para ser implementado por los metodos de envio)
 		this.sku = sku;
 		this.marca = marca;
 		this.precioBase = precioBase;
+		this.peso = peso;
 	}
 	public void agregarAtributo(String nombre, Object valor) {
 		//agrega un atributo dinámico al producto
@@ -53,6 +60,11 @@ public class Producto extends ItemCatalogo {
 	}
 	
 	
+	private boolean esPesoValido() {
+		//responde si un peso es valido
+		return (peso > 0);
+	}
+	
 	private boolean esAtributoDinamicoValido() {
 		 // valida que ningún atributo dinámico tenga valor null
 	    for (Object valor : atributosDinamicos.values()) {
@@ -79,4 +91,16 @@ public class Producto extends ItemCatalogo {
 		//devuelve la sku del producto
 		return this.sku;
 	}
+<<<<<<< HEAD
+=======
+	public String getCategoria() {
+		//devuelve la categoria del producto
+		return this.categoria;
+	}
+	
+	public float getPeso() {
+		//devuelve el peso del producto
+		return this.peso;
+	}
+>>>>>>> 00f1c66 (agregado atributo de peso a Items para ser implementado por los metodos de envio)
 }

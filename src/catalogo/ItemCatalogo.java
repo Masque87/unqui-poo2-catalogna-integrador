@@ -41,6 +41,7 @@ public abstract class ItemCatalogo {
     public String getCategoria() {return categoria;}
     public double getDescuento() { return descuento; }
     public int getStock() { return stock; }
+    public abstract float getPeso();
     public abstract double getPrecioBase();
     public double getPrecioFinal() {
     	//devuelve el precio final del producto, en caso de tener descuento con una reduccion de su precio, sino con el mismo precio base establecido.

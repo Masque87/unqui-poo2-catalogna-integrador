@@ -10,7 +10,7 @@ public class ProductoTest {
 
     @BeforeEach
     public void setUp() {
-        producto = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos", 10, "AUR-001", "Electronica", "Sony", 8000.0);
+        producto = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos", 10, "AUR-001", "Electronica", "Sony", 8000.0, 0.75f);
     }
 
   //setters y getters
@@ -127,29 +127,43 @@ public class ProductoTest {
 
     @Test
     public void testNoEsValidoSinSKU() {
-        Producto sinSku = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos",10 ,null, "Electronica", "Sony", 8000.0);
+        Producto sinSku = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos",10 ,null, "Electronica", "Sony", 8000.0, 0.75f);
         assertFalse(sinSku.esValido());
     }
     @Test
     public void testNoEsValidoConSKUVacio() {
-        Producto sinSku = new Producto("Auriculares", "desc", 10,"", "Electronica", "Sony", 8000.0);
+        Producto sinSku = new Producto("Auriculares", "desc", 10,"", "Electronica", "Sony", 8000.0, 0.75f);
         assertFalse(sinSku.esValido());
     }
 
     @Test
     public void testNoEsValidoConNombreVacio() {
-        Producto sinNombre = new Producto("", "desc",10, "AUR-001", "Electronica", "Sony", 8000.0);
+        Producto sinNombre = new Producto("", "desc",10, "AUR-001", "Electronica", "Sony", 8000.0, 0.75f);
         assertFalse(sinNombre.esValido());
     }
     @Test
     public void testNoEsValidoConSKUNull() {
-        Producto sinSku = new Producto("Auriculares", "desc",10, null, "Electronica", "Sony", 8000.0);
+        Producto sinSku = new Producto("Auriculares", "desc",10, null, "Electronica", "Sony", 8000.0, 0.75f);
         assertFalse(sinSku.esValido());
     }
 
     @Test
     public void testNoEsValidoConNombreNull() {
-        Producto sinNombre = new Producto(null, "desc",10, "AUR-001", "Electronica", "Sony", 8000.0);
+        Producto sinNombre = new Producto(null, "desc",10, "AUR-001", "Electronica", "Sony", 8000.0, 0.75f);
         assertFalse(sinNombre.esValido());
     }
+    
+    @Test
+    public void testNoEsValidoConPesoCero() {
+        Producto sinPeso = new Producto("Auriculares", "desc",10, "AUR-001", "Electronica", "Sony", 8000.0, 0);
+        assertFalse(sinPeso.esValido());
+    }
+    
+    @Test
+    public void testNoEsValidoConPesoNegativo() {
+        Producto pesoNegativo = new Producto("Auriculares", "desc",10, "AUR-001", "Electronica", "Sony", 8000.0, -15.0f);
+        assertFalse(pesoNegativo.esValido());
+    }
+    
+    //TODO: Falta agregar los tests que validan un precio valido (precio igual o mayor a cero)
 }

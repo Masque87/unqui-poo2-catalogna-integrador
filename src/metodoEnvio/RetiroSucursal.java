@@ -1,7 +1,13 @@
 package metodoEnvio;
 
-public class RetiroSucursal extends MetodoEnvio {
+import estadoPedido.Pedido;
 
+public class RetiroSucursal extends MetodoEnvio {
+	
+	protected Sucursal sucursal;
+	protected String mensajeConStock = "Envio inmediato.";
+	protected String mensajeSinStock = "Entrega hasta 3 dias despues de la compra.";
+	
 	@Override
 	public float getCosto() {
 		//El costo de envio es siempre cero para el retiro en sucursal.
@@ -10,6 +16,20 @@ public class RetiroSucursal extends MetodoEnvio {
 
 	public String getTiempoDeEntrega() {
 		//Hacer la vinculacion con la sucursal a la que se realiza el pedido y reemplazar los argumentos por los del pedido y la sucursal.
-		return (Sucursal.tieneStock(pedido)) ? "Envio inmediato." : "Entrega hasta 3 dias despues de la compra.";
+		return (conEntregaInmediata() ? mensajeConStock : mensajeSinStock);
 	}
+	
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+	
+	public boolean conEntregaInmediata() {
+		return (sucursal.tieneStock())
+	}
+	
+	public RetiroSucursal(Pedido pedido) {
+		super(pedido);
+	}
+	
+	
 }

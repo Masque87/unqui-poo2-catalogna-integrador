@@ -35,4 +35,12 @@ public class Paquete extends ItemCatalogo {
         }
         return suma;
 	}
+
+	public float getPeso() {
+		float suma = 0;
+        for (ItemCatalogo item : items) {
+            suma += item.getPeso();
+        }
+        return suma;
+	}
 }

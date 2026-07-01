@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import catalogo.ItemCatalogo;
 import notificacionesPedido.Notificable;
+import java.util.stream.Collectors;
 
 public class Pedido {
 
@@ -62,10 +63,12 @@ public class Pedido {
 	}
 	
 	public void reembolsoTotal() {
+		//TODO
 		//Rembolsa al cliente tanto el valor de los productos como el valor del envio.
 	}
 	
 	public void reembolsoProductos () {
+		//TODO
 		//Reembolsa al cliente la suma de los productos en el pedido.
 	}
 	
@@ -105,5 +108,21 @@ public class Pedido {
 		if(!items.contains(i)) {
 			throw new IllegalArgumentException("El item no está en el pedido");
 		}
+	}
+
+	public double getPrecioFinal() {
+		double resultado = 0;
+		for(ItemCatalogo i : items) {
+			resultado = resultado + i.getPrecioFinal();
+		}
+		return resultado;
+	}
+	
+	public float getPeso() {
+		float resultado = 0;
+		for(ItemCatalogo i : items) {
+			resultado = resultado + i.getPeso();
+		}
+		return resultado;
 	}
 }
