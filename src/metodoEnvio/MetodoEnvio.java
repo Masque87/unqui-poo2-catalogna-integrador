@@ -14,6 +14,7 @@ public abstract class MetodoEnvio {
 		el metodo de envio elegido.
 	*/
 	Pedido pedido;
+	CorreoArgentina sucursal;
 	public abstract String getTiempoDeEntrega();
 	public abstract float getCosto();
 	public abstract String getDireccionDeEnvio();

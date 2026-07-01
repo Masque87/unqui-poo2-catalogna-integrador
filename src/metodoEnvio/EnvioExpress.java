@@ -4,6 +4,8 @@ import estadoPedido.Pedido;
 
 public class EnvioExpress extends MetodoEnvio {
 
+	CorreoArgentina envioExpress;
+	
 	@Override
 	public float getCosto() {
 		//Calcula el costo en funcion del valor monetario total del pedido.
