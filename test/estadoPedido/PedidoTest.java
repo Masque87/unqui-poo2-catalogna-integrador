@@ -25,7 +25,7 @@ class PedidoTest {
 	
 	@BeforeEach
 	public void setUp() {
-		metodoEnvio = new EnvioExpress(10.00, 500.00);
+		metodoEnvio = new EnvioExpress(10.00f, 500.00f);
 		pedido = new Pedido(metodoEnvio);
 		producto = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos",10, "AUR-001", "Electronica", "Sony", 8000.0, 2);
 		producto1 = new Producto("Celular", "Smartphone",10, "Cel-001", "Electronica", "Samsung", 10000.0, 1);

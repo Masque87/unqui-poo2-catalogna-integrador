@@ -12,11 +12,7 @@ public class EnvioEstandar extends MetodoEnvio {
 	}
 	
 	@Override
-<<<<<<< HEAD
 	public float calcularCosto(Pedido pedido) {
-=======
-	public float calcularCosto() {
->>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 		//Calcula el costo en funcion del peso total del pedido (kilogramos) y la direccion de entrega (kilometros)
 		//Hacer la vinculacion con el pedido y reemplazar los argumentos por los del pedido.
 		

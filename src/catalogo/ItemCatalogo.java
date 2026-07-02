@@ -69,6 +69,6 @@ public abstract class ItemCatalogo {
     /*
      * Para ser usado con el patron Visitor para el ejercicio 2.8 - Reportes
      */
-    public String aceptar(Visitor Visitor) { return;}
+    public String aceptar(Visitor Visitor) { return "";}
 
 }

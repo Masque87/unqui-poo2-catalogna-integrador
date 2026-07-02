@@ -1,9 +1,6 @@
 package reporte;
 
-import catalogo.ItemCatalogo;
-import catalogo.Paquete;
-import catalogo.Producto;
-import estadoPedido.Pedido;
+import catalogo.*;
 
 public class ReporteCSV extends Reporte implements Visitor {
 

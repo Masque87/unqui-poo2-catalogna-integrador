@@ -17,7 +17,7 @@ public class EnvioExpressTest {
 	
 	@BeforeEach
 	void setUp() {
-		envioExpress = new EnvioExpress(0.10, 1000.00);
+		envioExpress = new EnvioExpress(0.10f, 1000.00f);
 		pedido = new Pedido(envioExpress);
 		producto = new Producto("Auriculares Bluetooth", "Auriculares inalámbricos",10, "AUR-001", "Electronica", "Sony", 8000.0,2);
 		producto1 = new Producto("Celular", "Smartphone",10, "Cel-001", "Electronica", "Samsung", 10000.0, 2);

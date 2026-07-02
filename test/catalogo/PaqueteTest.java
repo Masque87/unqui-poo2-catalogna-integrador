@@ -17,8 +17,8 @@ public class PaqueteTest {
         paquete = new Paquete("Pack Audio Móvil", "Pack de audio", 2, 0.15, "Electronica");
         item1 = mock(ItemCatalogo.class);
         item2 = mock(ItemCatalogo.class);
-        when(item1.getPrecioFinal()).thenReturn(8000.0);
-        when(item2.getPrecioFinal()).thenReturn(2300.0);
+        when(item1.getPrecioFinal()).thenReturn(8000.0f);
+        when(item2.getPrecioFinal()).thenReturn(2300.0f);
     }
 
    //getters

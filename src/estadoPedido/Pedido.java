@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import catalogo.ItemCatalogo;
 import notificacionesPedido.Notificable;
-<<<<<<< HEAD
 import metodoEnvio.*;
-=======
-import reporte.Visitor;
-
->>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
-import java.util.stream.Collectors;
 
 public class Pedido {
 
@@ -155,19 +149,19 @@ public class Pedido {
 			throw new IllegalArgumentException("El item no está en el pedido");
 		}
 	}
-
-<<<<<<< HEAD
 		
-		private void validarQueElPedidoNoEstéVacío() {
+	private void validarQueElPedidoNoEstéVacío() {
 		if(items.isEmpty()) {
 			throw new IllegalStateException("El pedido se encuentra vacío");
-=======
+		}
+	}
+	
 	public float getPrecioFinal() {
 		float resultado = 0;
 		for(ItemCatalogo i : items) {
 			resultado = resultado + i.getPrecioFinal();
->>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 		}
+		return resultado;
 	}
 		
 	
@@ -178,9 +172,4 @@ public class Pedido {
 		}
 		return resultado;
 	}
-	
-<<<<<<< HEAD
-
-=======
->>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 }

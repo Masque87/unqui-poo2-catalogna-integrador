@@ -2,7 +2,6 @@ package catalogo;
 import java.util.ArrayList;
 import java.util.List;
 
-import reporte.ReporteCSV;
 import reporte.Visitor;
 public class Paquete extends ItemCatalogo {
 /* Prop: modelar elemento del catalogo que agrupa varios items.
@@ -31,8 +30,8 @@ public class Paquete extends ItemCatalogo {
 	}
 
 	@Override
-	public double getPrecioBase() {
-		double suma = 0;
+	public float getPrecioBase() {
+		float suma = 0;
         for (ItemCatalogo item : items) {
             suma += item.getPrecioFinal();
         }
@@ -47,7 +46,7 @@ public class Paquete extends ItemCatalogo {
         return suma;
 	}
 	
-	 public void aceptar(Visitor visitor) {
-	    	visitor.visitarPaquete(this);
+	 public String aceptar(Visitor visitor) {
+	    	return visitor.visitarPaquete(this);
 	    }
 }

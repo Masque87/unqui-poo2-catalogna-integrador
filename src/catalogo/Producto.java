@@ -76,9 +76,9 @@ public class Producto extends ItemCatalogo {
 	}	
 		
 	@Override
-	public double getPrecioBase() {
+	public float getPrecioBase() {
 		//devuelve el precio base sin descuentos aplicados
-		return this.precioBase;
+		return (float) this.precioBase;
 	}
 	public String getMarca() {
 		//devuelve la marca del producto

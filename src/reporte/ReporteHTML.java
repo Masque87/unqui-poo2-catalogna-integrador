@@ -1,9 +1,6 @@
 package reporte;
 
-import catalogo.ItemCatalogo;
-import catalogo.Paquete;
-import catalogo.Producto;
-import estadoPedido.Pedido;
+import catalogo.*;
 
 public class ReporteHTML extends Reporte implements Visitor {
 

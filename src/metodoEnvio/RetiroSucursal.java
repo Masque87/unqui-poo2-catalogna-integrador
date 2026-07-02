@@ -9,11 +9,7 @@ public class RetiroSucursal extends MetodoEnvio {
 	protected String mensajeSinStock = "Entrega hasta 3 dias despues de la compra.";
 	
 	@Override
-<<<<<<< HEAD
 	public float calcularCosto(Pedido pedido) {
-=======
-	public float calcularCosto() {
->>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 		//El costo de envio es siempre cero para el retiro en sucursal.
 		return 0;
 	}

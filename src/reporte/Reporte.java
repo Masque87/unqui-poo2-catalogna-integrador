@@ -1,10 +1,7 @@
 package reporte;
 
-import catalogo.ItemCatalogo;
-import catalogo.Paquete;
-import catalogo.Producto;
+import catalogo.*;
 import estadoPedido.Pedido;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
