@@ -229,6 +229,43 @@ class PedidoTest {
 	}
 	
 	@Test
+	void test_UnPedidoEntregadoNoPuedeAvanzarAlSiguienteEstado() {
+		pedido.addItem(producto);
+		pedido.siguienteEstado();
+		pedido.siguienteEstado();
+		pedido.siguienteEstado();
+		pedido.siguienteEstado();
+		assertThrows(IllegalStateException.class, () -> { pedido.siguienteEstado();});
+		
+	}
+	
+	@Test
+	void test_UnPedidoCanceladoNoPuedeAvanzarAlSiguienteEstado() {
+		pedido.addItem(producto);
+		pedido.siguienteEstado();
+		pedido.cancelarPedido();
+		assertThrows(IllegalStateException.class, () -> { pedido.siguienteEstado();});
+	}
+	
+	@Test
+	void test_UnPedidoEntregadoNoPuedeSerCancelado() {
+		pedido.addItem(producto);
+		pedido.siguienteEstado();
+		pedido.siguienteEstado();
+		pedido.siguienteEstado();
+		pedido.siguienteEstado();
+		assertThrows(IllegalStateException.class, () -> { pedido.cancelarPedido();});
+	}
+	
+	@Test
+	void test_UnPedidoNoPuedeSerCanceladoDosVeces() {
+		pedido.addItem(producto);
+		pedido.siguienteEstado();
+		pedido.cancelarPedido();
+		assertThrows(IllegalStateException.class, () -> { pedido.cancelarPedido();});
+	}
+	
+	@Test
 	void test_NoEsPosibleAvanzarDeEstadoEnUnPedidoSinItems() {
 		assertThrows(IllegalStateException.class, () -> { 
 			pedido.siguienteEstado(); });

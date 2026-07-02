@@ -6,7 +6,8 @@ public class EnvioEstandar extends MetodoEnvio {
 	CorreoArgentina gestorDeCorreo;
 	Direccion direccionDelEnvio;
 
-	public EnvioEstandar(Direccion direccion) {
+	public EnvioEstandar(Direccion direccion, CorreoArgentina gestor) {
+		this.gestorDeCorreo = gestor;
 		this.direccionDelEnvio = direccion;
 	}
 	

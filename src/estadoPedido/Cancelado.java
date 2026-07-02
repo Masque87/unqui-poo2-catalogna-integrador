@@ -27,7 +27,7 @@ public class Cancelado extends EstadoPedido {
 		throw new IllegalStateException("Este pedido ya ha sido cancelado");
 	}
 	
-	@Override
+
 	public void enviarCorreoConCupon(Fidelizacion f){
 		f.enviarCuponAlCliente();
 	}

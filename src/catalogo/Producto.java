@@ -46,7 +46,7 @@ public class Producto extends ItemCatalogo {
 	}
 	public boolean esValido() {
 	    // retorna si los atributos son validos 
-	   return super.esValido() && esSkuValido() && esAtributoDinamicoValido();  
+	   return super.esValido() && esSkuValido() && esAtributoDinamicoValido() && esPesoValido();  
 	}
 	
 	private boolean esSkuValido() {

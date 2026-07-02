@@ -36,6 +36,7 @@ public class FidelizacionTest {
 	
 	@Test
 	void test_SeEnviaUnCuponAlCLienteAlCancelarElPedido() {
+		pedido.siguienteEstado();
 		pedido.cancelarPedido();
 		verify(mailSenderMock).enviarMail("cliente@gmail.com", "Te enviamos un cupón",
 				"Lamentamos mucho que hayas cancelado tu pedido. Te dejamos un cupón del 5% para tu próxima compra", "cupón");

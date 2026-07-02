@@ -153,14 +153,6 @@ public class Pedido {
 		}
 	}
 		
-
-	public double getPrecioFinal() {
-		double resultado = 0;
-		for(ItemCatalogo i : items) {
-			resultado = resultado + i.getPrecioFinal();
-		}
-		return resultado;
-	}
 	
 	public float getPeso() {
 		float resultado = 0;

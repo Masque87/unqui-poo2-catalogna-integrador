@@ -17,11 +17,13 @@ public class Entregado extends EstadoPedido {
 	@Override
 	public void siguienteEstado() {
 		//Estado terminal.
+		throw new IllegalStateException("Este pedido ya fue entregado.");
 	}
 
 	@Override
 	public void cancelarPedido() {
 		//Estado terminal.
+		throw new IllegalStateException("No es posible cancelar un pedido entregado.");
 	}
 	
 	@Override
