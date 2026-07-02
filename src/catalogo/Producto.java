@@ -3,6 +3,8 @@ package catalogo;
 import java.util.HashMap;
 import java.util.Map;
 
+import reporte.Visitor;
+
 public class Producto extends ItemCatalogo {
 /* Propósito: implementar unidad básica del catalogo.
 	   representa en el patron Composite del Catálogo de Productos: "Leaf"
@@ -96,4 +98,8 @@ public class Producto extends ItemCatalogo {
 		//devuelve el peso del producto
 		return this.peso;
 	}
+	
+	public String aceptar(Visitor Visitor) {
+    	return Visitor.visitarProducto(this);
+    }
 }

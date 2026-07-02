@@ -11,6 +11,7 @@ public class Confirmado extends EstadoPedido {
 	@Override
 	public void procesarEstado() {
 		pedido.decrementarStockDeLosItems();
+		//TODO: Computar items del pedido como vendidos, puedo computar el pedido en todo caso, lo agrega al reporte de items vendidos.
 	}
 	
 	@Override

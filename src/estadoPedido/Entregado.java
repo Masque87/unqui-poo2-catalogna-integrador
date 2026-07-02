@@ -13,6 +13,10 @@ public class Entregado extends EstadoPedido {
 	@Override
 	public void procesarEstado() {
 		System.out.println("El pedido ha sido entregado el día " + LocalDate.now());
+		/*TODO: Agregar el procesamiento del pedido como pedido e items vendidos, esto permite que en el punto 2.8
+		 * yo pueda verificar los pedidos que fueron vendidos efectivamente en un periodo y ordenar la lista de items
+		 * segun el criterio pedido, accediendo a cada uno de los pedidos.
+		 */
 	}
 	@Override
 	public void siguienteEstado() {

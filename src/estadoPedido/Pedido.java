@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import catalogo.ItemCatalogo;
 import notificacionesPedido.Notificable;
+<<<<<<< HEAD
 import metodoEnvio.*;
+=======
+import reporte.Visitor;
+
+>>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 import java.util.stream.Collectors;
 
 public class Pedido {
@@ -17,6 +22,11 @@ public class Pedido {
 	public Pedido (MetodoEnvio metodoDeEnvio) {
 		this.setMetodoDeEnvio(metodoDeEnvio);
 		this.estado = new Borrador(this);
+	}
+	
+	//Agregado para ser usado en el reporte final
+	public List<ItemCatalogo> getListaDeItems(){
+		return items;
 	}
 	
 	public void addNotificable(Notificable n) {
@@ -146,10 +156,17 @@ public class Pedido {
 		}
 	}
 
+<<<<<<< HEAD
 		
 		private void validarQueElPedidoNoEstéVacío() {
 		if(items.isEmpty()) {
 			throw new IllegalStateException("El pedido se encuentra vacío");
+=======
+	public float getPrecioFinal() {
+		float resultado = 0;
+		for(ItemCatalogo i : items) {
+			resultado = resultado + i.getPrecioFinal();
+>>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 		}
 	}
 		
@@ -162,5 +179,8 @@ public class Pedido {
 		return resultado;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f1c6da (implementacion al 90% terminada del visitor, punto 2.8)
 }

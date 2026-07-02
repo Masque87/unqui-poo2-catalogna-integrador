@@ -1,6 +1,9 @@
 package catalogo;
 import java.util.ArrayList;
 import java.util.List;
+
+import reporte.ReporteCSV;
+import reporte.Visitor;
 public class Paquete extends ItemCatalogo {
 /* Prop: modelar elemento del catalogo que agrupa varios items.
  * En base al patron Composite representa: "Composite"
@@ -43,4 +46,8 @@ public class Paquete extends ItemCatalogo {
         }
         return suma;
 	}
+	
+	 public void aceptar(Visitor visitor) {
+	    	visitor.visitarPaquete(this);
+	    }
 }

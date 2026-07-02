@@ -1,5 +1,7 @@
 package catalogo;
 
+import reporte.Visitor;
+
 public abstract class ItemCatalogo {
 		/* Propósito: comportamiento común a implementar por todos los elementos del catálogo.
 		   representa en el Composite del Catálogo de Productos: "Component"
@@ -42,10 +44,10 @@ public abstract class ItemCatalogo {
     public double getDescuento() { return descuento; }
     public int getStock() { return stock; }
     public abstract float getPeso();
-    public abstract double getPrecioBase();
-    public double getPrecioFinal() {
+    public abstract float getPrecioBase();
+    public float getPrecioFinal() {
     	//devuelve el precio final del producto, en caso de tener descuento con una reduccion de su precio, sino con el mismo precio base establecido.
-    	return  (this.getPrecioBase() * (1- this.getDescuento() ));
+    	return  (float) (this.getPrecioBase() * (1- this.getDescuento() ));
     }
     
     public void setStock(int stock){
@@ -64,5 +66,9 @@ public abstract class ItemCatalogo {
     	stock += 1;
     }
     
+    /*
+     * Para ser usado con el patron Visitor para el ejercicio 2.8 - Reportes
+     */
+    public String aceptar(Visitor Visitor) { return;}
 
 }

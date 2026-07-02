@@ -11,7 +11,8 @@ public class Enviado extends EstadoPedido {
 	
 	@Override
 	public void procesarEstado() {
-	System.out.println("El pedido ha sido enviado el día " + LocalDate.now());	
+		System.out.println("El pedido ha sido enviado el día " + LocalDate.now());	
+		
 	}
 	
 	@Override
@@ -23,7 +24,7 @@ public class Enviado extends EstadoPedido {
 	public void cancelarPedido() {
 		this.pedido.reembolsoProductos();
 		this.pedido.cambiarEstado(new Cancelado(pedido, this.mensajeAlCancelar()));
-
+		//TODO: Sacar los items del pedido de la lista de vendidos.
 	}
 	
 	@Override
