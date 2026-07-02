@@ -1,6 +1,7 @@
 package estadoPedido;
 import java.time.LocalDate;
 
+import notificacionesPedido.GeneradorFactura;
 import notificacionesPedido.NotificadorEmail;
 
 public class Entregado extends EstadoPedido {
@@ -23,8 +24,14 @@ public class Entregado extends EstadoPedido {
 		//Estado terminal.
 	}
 	
-	public void notificarPedidoEntregado(NotificadorEmail n) {
+	@Override
+	public void notificarAlCliente(NotificadorEmail n) {
 		n.notificarPedidoEntregado();
+	}
+	
+	@Override
+	public void generarComprobanteFiscal(GeneradorFactura generadorFactura) {
+		generadorFactura.generarComprobanteFiscal(pedido.getItems(), pedido.costoTotalProductos());
 	}
 
 }

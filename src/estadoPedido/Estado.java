@@ -8,6 +8,7 @@ public interface Estado{
 	public abstract void procesarEstado(); //Se realizan las acciones correspondientes a cada estado del pedido.
 	public void enviarCorreoConCupon(Fidelizacion sistemaDeFidelzacion);
 	public void notificarAlCliente(NotificadorEmail notificador);
+	public void generarComprobanteFiscal(GeneradorFactura generadorFactura);
 	public String mensajeAlCancelar(); //Mensaje que informa las acciones realizadas una vez cancelado el pedido
 	public Boolean puedeAgregarItems();//Indica si se pueden agregar items en el estado actual.
 	public Boolean puedeRemoverItems();//Indica si se pueden remover items en el estado actual.

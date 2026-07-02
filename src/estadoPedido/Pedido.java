@@ -35,6 +35,10 @@ public class Pedido {
 		return estado;
 	}
 	
+	public List<ItemCatalogo> getItems(){
+		return this.items;
+	}
+	
 	public List<Notificable> getNotificables() {
 		return this.notificables;
 	}

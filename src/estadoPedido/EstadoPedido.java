@@ -10,4 +10,5 @@ public abstract class EstadoPedido implements Estado{
 	public Boolean puedeRemoverItems() { return false; }
 	public void enviarCorreoConCupon(Fidelizacion n) {}
 	public void notificarAlCliente(NotificadorEmail notificador) {}
+	public void generarComprobanteFiscal(GeneradorFactura generadorFactura) {}
 }
